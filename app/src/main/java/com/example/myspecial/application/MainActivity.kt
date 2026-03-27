@@ -55,7 +55,7 @@ fun Greeting(name: String, modifier: Modifier) {
         Text(
             modifier = Modifier.align(Alignment.CenterHorizontally)
                 .padding(18.dp)
-                .background(color=Color.Fuchsia)
+                .background(color=Color(0xFFFF00FF))
                 .clickable { },
             text = "Having fun?",
             color = Color.White
