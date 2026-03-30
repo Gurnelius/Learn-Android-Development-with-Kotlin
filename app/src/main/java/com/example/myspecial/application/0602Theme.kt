@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Checkbox
@@ -28,6 +29,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.myspecial.application.ui.theme.AppTheme
 import com.example.myspecial.application.ui.theme.MySpecialApplicationTheme
 
 @Composable
@@ -80,6 +82,7 @@ fun ThemeComposable(modifier: Modifier = Modifier) {
         Spacer(Modifier.size(24.dp))
 
         FilledTonalButton(
+            shape = CutCornerShape(70),
             modifier = Modifier
                 .padding(16.dp)
                 .fillMaxWidth(),
@@ -101,6 +104,18 @@ fun ThemeComposable(modifier: Modifier = Modifier) {
 @Composable
 fun ThemeComposablePixelPreview() {
     MySpecialApplicationTheme {
+        ThemeComposable()
+    }
+}
+
+@Preview(
+    showBackground = true,
+    device = Devices.PIXEL_4_XL,
+    name = "Pixel 4 XL"
+)
+@Composable
+fun NewThemeComposablePixelPreview() {
+    AppTheme {
         ThemeComposable()
     }
 }
