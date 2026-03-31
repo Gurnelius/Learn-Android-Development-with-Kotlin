@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.myspecial.application.lessons.StringPlaceholderComposable
 import com.example.myspecial.application.ui.theme.MySpecialApplicationTheme
 
 class MainActivity : ComponentActivity() {
@@ -26,8 +27,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MySpecialApplicationTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                    StringPlaceholderComposable(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
