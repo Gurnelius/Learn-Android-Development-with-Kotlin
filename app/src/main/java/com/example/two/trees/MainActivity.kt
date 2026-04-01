@@ -66,6 +66,7 @@ fun TwoTreesApp() {
                     label = "Toggle images"
                 )
 
+
                 Spacer(modifier = Modifier.height(32.dp))
 
                 AsyncImage(
@@ -80,6 +81,13 @@ fun TwoTreesApp() {
     }
 }
 
+/**
+ * A composable that displays a [Switch] paired with a [Text] label.
+ *
+ * @param checked Whether the switch is currently on or off.
+ * @param onCheckedChange Callback invoked when the user toggles the switch.
+ * @param label The text displayed next to the switch.
+ */
 @Composable
 fun SwitchWithLabel(
     checked: Boolean,
