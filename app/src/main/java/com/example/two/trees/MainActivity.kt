@@ -118,9 +118,7 @@ fun EnterGuess(
     ) {
         TextField(
             value = guess,
-            onValueChange = {
-                guessChanged(it)
-            },
+            onValueChange = guessChanged,
             placeholder = {
                 Text("Enter a state")
             }
@@ -129,9 +127,7 @@ fun EnterGuess(
         Spacer(modifier = Modifier.height(24.dp))
 
         Button(
-            onClick = {
-                checkGuess()
-            }
+            onClick = checkGuess
         ) {
             Text(
                 text = "Make your guess",
