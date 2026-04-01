@@ -1,12 +1,13 @@
 package com.example.myspecial.application.challenge
 
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.magnifier
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -25,71 +26,78 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.myspecial.application.R
 import com.example.myspecial.application.ui.theme.AppTheme
+import org.intellij.lang.annotations.JdkConstants
+
 
 @Composable
-fun GetToKnowYouComposable1(
-    modifier: Modifier = Modifier,
-) {
+fun GetUserInfoComposable(
+    modifier: Modifier = Modifier
+){
     var firstName by remember { mutableStateOf("") }
     var favoriteColor by remember { mutableStateOf("") }
     var favoriteSnack by remember { mutableStateOf("") }
+
     val message = stringResource(
         R.string.get_to_know_you_text,
-        firstName,
-        favoriteColor,
-        favoriteSnack
+        firstName, favoriteColor, favoriteSnack
     )
 
     Column(
-        modifier = modifier
-            .fillMaxSize()
+        modifier.fillMaxSize()
             .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         TextField(
             value = firstName,
             onValueChange = { firstName = it },
             label = {
-                Text(text = "First Name")
+                Text( text = "First Name")
             },
             placeholder = {
-                Text(text = "Enter your first name")
+                Text( text = "Enter your first name.")
             }
+
         )
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier.padding(16.dp))
+
         TextField(
             value = favoriteColor,
             onValueChange = { favoriteColor = it },
             label = {
-                Text(text = "Favorite Color")
+                Text( text = "Favorite Color")
             },
             placeholder = {
-                Text(text = "Enter your favorite color")
+                Text( text = "Enter your favorite color.")
             }
+
         )
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier.padding(16.dp))
+
         TextField(
             value = favoriteSnack,
             onValueChange = { favoriteSnack = it },
             label = {
-                Text(text = "Favorite Snack")
+                Text( text = "Favorite Snack")
             },
             placeholder = {
-                Text(text = "Enter your favorite snack")
+                Text( text = "Enter your favorite snack.")
             }
+
         )
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier.padding(16.dp))
 
         val context = LocalContext.current
         val controller = LocalSoftwareKeyboardController.current
+
         Button(
-            modifier = Modifier.fillMaxWidth(fraction = 0.5f),
+            modifier = modifier.fillMaxWidth(fraction = 0.5f),
             onClick = {
                 controller?.hide()
                 Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+                Log.i("GetUserInfoComposable", message)
             }
         ) {
-            Text(text = "Submit")
+            Text( text = "Submit")
         }
     }
 }
@@ -100,8 +108,8 @@ fun GetToKnowYouComposable1(
     name = "Pixel 4 XL"
 )
 @Composable
-fun GetToKnowYouComposablePreview() {
+fun GetUserInfoComposablePreview() {
     AppTheme {
-        GetToKnowYouComposable1()
+        GetUserInfoComposable()
     }
 }
