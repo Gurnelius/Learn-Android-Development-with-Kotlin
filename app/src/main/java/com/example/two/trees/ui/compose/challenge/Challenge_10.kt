@@ -21,6 +21,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -47,8 +48,8 @@ fun Challenge10App() {
             }
         ) { innerPadding ->
             val viewModel = viewModel<Challenge10ViewModel>()
-            val quantity = viewModel.quantity.collectAsStateWithLifecycle()
-            val totalAmount = viewModel.totalAmount.collectAsStateWithLifecycle()
+            val quantity by viewModel.quantity.collectAsStateWithLifecycle()
+            val totalAmount by viewModel.totalAmount.collectAsStateWithLifecycle()
 
             Column(
                 modifier = Modifier
@@ -78,7 +79,7 @@ fun Challenge10App() {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(24.dp),
-                    text = "Total cans: ${quantity.value}",
+                    text = "Total cans: $quantity",
                     style = MaterialTheme.typography.titleLarge
                 )
                 
@@ -86,7 +87,7 @@ fun Challenge10App() {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 24.dp),
-                    text = "Total amount: ${totalAmount.value}.00",
+                    text = "Total amount: $totalAmount.00",
                     style = MaterialTheme.typography.titleLarge
                 )
 
