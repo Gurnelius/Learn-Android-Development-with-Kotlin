@@ -22,6 +22,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.two.trees.ui.compose.TwoTreesAppBar
+import com.example.two.trees.ui.compose.challenge.Challenge10App
 import com.example.two.trees.ui.theme.AppTheme
 
 class MainActivity : ComponentActivity() {
@@ -29,7 +30,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            TwoTreesApp()
+            Challenge10App()
         }
     }
 }
