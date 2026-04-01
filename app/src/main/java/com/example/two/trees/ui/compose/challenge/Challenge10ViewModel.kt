@@ -19,7 +19,7 @@ class Challenge10ViewModel : ViewModel() {
     }
 
     fun decreaseQuantity() {
-        _quantity.value--
+        if (_quantity.value > 0) _quantity.value--
     }
 
     fun checkout() {
