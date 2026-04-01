@@ -50,8 +50,20 @@ fun TwoTreesApp() {
                 TwoTreesAppBar()
             }
         ) { innerPadding ->
+
+            val imageId: MutableState<Int> = remember {
+                mutableIntStateOf(R.drawable.olive_branch_vector)
+            }
+
             ImageSwapper(
                 modifier = Modifier.padding(innerPadding),
+                imageId = imageId.value,
+                swapImages = {
+                    imageId.value = if (imageId.value == R.drawable.olive_branch_vector)
+                        R.drawable.logo
+                    else
+                        R.drawable.olive_branch_vector
+                }
             )
         }
     }
@@ -59,19 +71,19 @@ fun TwoTreesApp() {
 
 @Composable
 fun ImageSwapper(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    imageId: Int,
+    swapImages: () -> Unit
 ) {
     Column(
         modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        val imageId: MutableState<Int> = remember {
-            mutableIntStateOf(R.drawable.olive_branch_vector)
-        }
+
 
         Image(
-            painter = painterResource(imageId.value),
+            painter = painterResource(imageId),
             modifier = Modifier.fillMaxWidth(),
             contentScale = ContentScale.Fit,
             contentDescription = null
@@ -80,12 +92,7 @@ fun ImageSwapper(
         Spacer(modifier = Modifier.height(24.dp))
 
         Button(
-            onClick = {
-                imageId.value = if (imageId.value == R.drawable.olive_branch_vector)
-                    R.drawable.logo
-                else
-                    R.drawable.olive_branch_vector
-            }
+            onClick = swapImages
         ) {
             Text(
                 text = "Swap image",
