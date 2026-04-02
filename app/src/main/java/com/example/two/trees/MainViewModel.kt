@@ -2,6 +2,7 @@ package com.example.two.trees
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.two.trees.data.Product
 import com.example.two.trees.data.ProductRepository
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -34,4 +35,17 @@ class MainViewModel(
 
 
 
+}
+
+
+class MainViewModelFactory(
+    private val productRepository: ProductRepository
+) : ViewModelProvider.Factory {
+    @Suppress("UNCHECKED_CAST")
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
+            return MainViewModel(productRepository) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
+    }
 }
