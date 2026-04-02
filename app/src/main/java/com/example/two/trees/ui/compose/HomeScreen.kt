@@ -3,6 +3,7 @@ package com.example.two.trees.ui.compose
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
@@ -29,7 +30,8 @@ import com.example.two.trees.ui.theme.AppTheme
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
-    scrollState: ScrollState = rememberScrollState()
+    scrollState: ScrollState = rememberScrollState(),
+    takeTourClick: () -> Unit
 ) {
     Column(modifier = modifier
         .fillMaxSize()
@@ -40,6 +42,9 @@ fun HomeScreen(
             modifier = Modifier.aspectRatio(16f / 9f),
             contentScale = ContentScale.Crop,
             contentDescription = null
+        )
+        TakeATour(
+            takeTourClick = takeTourClick
         )
         Text(
             stringResource(R.string.description_text),
@@ -60,12 +65,16 @@ fun HomeScreen(
 
 @Composable
 fun TakeATour(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    takeTourClick: () -> Unit
 ) {
     Box(
         modifier = modifier
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.tertiary)
+            .clickable{
+                takeTourClick()
+            }
     ) {
         Text(
             stringResource(id = R.string.take_a_tour).uppercase(),
@@ -84,6 +93,8 @@ fun TakeATour(
 @Composable
 fun HomeScreenPreview() {
     AppTheme {
-        HomeScreen()
+        HomeScreen(
+            takeTourClick = {}
+        )
     }
 }
