@@ -44,8 +44,5 @@ fun TwoTreesAppBar(
                 }
             }
 
-            )
-
-
-
+        )
 }
