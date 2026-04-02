@@ -28,7 +28,7 @@ class MainViewModel(
         Log.i(TAG, "initialized")
         Log.i(TAG, product.toString())
 
-        val data = productRepository.getTextFromResources(R.raw.olive_oils_data)
+        val data = productRepository.getTextFromAssets("olive_oils_data.json")
         Log.i(TAG, data)
     }
 
