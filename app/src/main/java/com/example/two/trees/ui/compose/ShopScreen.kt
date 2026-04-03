@@ -49,7 +49,9 @@ fun ShopScreen(
             FreeShipping()
         }
         items(products) {
-            ProductItem(product = it)
+            ProductItem(
+                product = it
+            )
         }
     }
 }
