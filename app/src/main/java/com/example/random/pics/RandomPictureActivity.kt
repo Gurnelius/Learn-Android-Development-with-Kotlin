@@ -46,7 +46,7 @@ fun RandomPictureApp() {
             RandomPicScreen(
                 pics = pictures,
                 displayImages = { viewModel.showRandomImage() },
-                modifier = Modifier.fillMaxSize().padding(innerPadding)
+                modifier = Modifier.padding(innerPadding)
             )
         }
     }
