@@ -39,10 +39,8 @@ fun RandomPictureApp() {
                     pictureRepository = PictureRepository()
                 )
             )
-            // TODO: create a variable to observe state changes
             val pictures by viewModel.pictures.collectAsStateWithLifecycle()
 
-            // TODO: make a call to the RandomPicScreen composable
             RandomPicScreen(
                 pics = pictures,
                 displayImages = { viewModel.showRandomImage() },

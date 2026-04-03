@@ -40,9 +40,8 @@ fun RandomPicScreen(
             DisplayRandomImages(displayImages = displayImages)
         }
 
-        // TODO: display each picture item
-        items(pics) {
-            PictureItem(pic = it)
+        items(pics) { pic ->
+            PictureItem(pic = pic)
         }
     }
 }
