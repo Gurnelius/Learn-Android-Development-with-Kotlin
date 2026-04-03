@@ -21,6 +21,9 @@ class MainViewModel(
     private val _quantity = MutableStateFlow(0)
     val quantity: StateFlow<Int> = _quantity
 
+    private val _selectedProduct = MutableStateFlow<Product?>(null)
+    val selectedProduct: StateFlow<Product?> = _selectedProduct
+
     init {
         viewModelScope.launch {
             _products.value = productRepository.getProducts()
@@ -28,6 +31,9 @@ class MainViewModel(
         }
     }
 
+    fun selectProduct(product: Product){
+        _selectedProduct.value = product
+    }
 }
 
 class MainViewModelFactory(
