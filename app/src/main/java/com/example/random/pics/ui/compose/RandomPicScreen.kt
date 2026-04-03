@@ -28,6 +28,7 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.random.pics.data.Picture
 import com.example.random.pics.ui.theme.RandomPicAppTheme
+import com.example.two.trees.R
 
 @Composable
 fun RandomPicScreen(
@@ -77,6 +78,7 @@ private fun PictureItem(
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
                     .data(pic.thumbnailUrl)
+                    .placeholder(R.drawable.logo)
                     .crossfade(true)
                     .build(),
                 contentDescription = null,
