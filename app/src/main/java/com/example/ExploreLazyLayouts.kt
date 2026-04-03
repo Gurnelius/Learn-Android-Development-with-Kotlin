@@ -1,12 +1,17 @@
 package com.example
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -25,7 +30,17 @@ import com.example.two.trees.ui.theme.AppTheme
 @Composable
 fun MyLazyColumn(modifier: Modifier = Modifier) {
     LazyColumn(modifier = modifier.fillMaxSize()) {
+//        item {
+//            MyItem()
+//        }
+//
+//        items(count = 6) {
+//            MyItem()
+//        }
 
+        items(exampleItems){
+            MyItem()
+        }
     }
 }
 
@@ -43,9 +58,17 @@ private fun MyLazyColumnPreview() {
 @Composable
 fun MyLazyRow(modifier: Modifier = Modifier) {
     LazyRow(
-        modifier = modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize(),
+        contentPadding = PaddingValues(16.dp),
+        horizontalArrangement = Arrangement.spacedBy(6.dp)
     ) {
+        item {
+            MyItem()
+        }
 
+        items(count = 6) {
+            MyItem()
+        }
     }
 }
 
@@ -63,11 +86,14 @@ private fun MyLazyRowPreview() {
 
 @Composable
 fun MyLazyGrid(modifier: Modifier = Modifier) {
-//    LazyHorizontalGrid(
-//        modifier = modifier.fillMaxSize(),
-//    ) {
-//
-//    }
+    LazyHorizontalGrid(
+        modifier = modifier.fillMaxSize(),
+        rows = GridCells.Adaptive(minSize = 128.dp)
+    ) {
+        items(count=8) {
+            MyItem()
+        }
+    }
 }
 
 @Preview(showBackground = true, widthDp = 600, heightDp = 400)
