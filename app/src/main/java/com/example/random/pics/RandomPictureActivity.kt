@@ -13,7 +13,6 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.random.pics.data.PictureRepository
-import com.example.random.pics.ui.compose.DisplayRandomImages
 import com.example.random.pics.ui.compose.RandomPicScreen
 import com.example.random.pics.ui.compose.RandomPicsAppBar
 import com.example.random.pics.ui.theme.RandomPicAppTheme
