@@ -16,6 +16,9 @@ sealed class Screen(
     data object Home: Screen("home", R.string.home_label, Icons.Filled.Home)
     data object Tours: Screen("tours", R.string.tours_label, Icons.Filled.Place)
     data object Shop: Screen("shop", R.string.shop_label, Icons.Filled.ShoppingCart)
+
+
+    data object Product: Screen("product", 0, Icons.Filled.ShoppingCart)
 }
 
 val screens = listOf(Screen.Home, Screen.Tours, Screen.Shop)
