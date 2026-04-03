@@ -39,8 +39,8 @@ fun ShopScreen(
         modifier = modifier.fillMaxSize(),
         columns = GridCells.Fixed(2),
         contentPadding = PaddingValues(16.dp),
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
-        horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         item {
             ShopLabel()
