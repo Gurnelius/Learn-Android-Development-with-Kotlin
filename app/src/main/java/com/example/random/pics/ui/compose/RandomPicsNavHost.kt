@@ -26,8 +26,7 @@ fun RandomPicsNavHost(
         )
     )
     val pics by viewModel.pictures.collectAsStateWithLifecycle()
-
-    // TODO: observe changes to the selected picture
+    val selectedPicture by viewModel.selectedPicture.collectAsStateWithLifecycle()
 
     NavHost(
         navController = navController,
@@ -40,14 +39,15 @@ fun RandomPicsNavHost(
                 displayImages = { viewModel.showRandomImage() },
                 onPictureClick = { pic ->
                     Log.i(TAG, "The selected picture: $pic")
-                    // TODO: update the selected picture
+                    viewModel.selectPicture(picture = pic)
                     navController.navigate("picture")
                 }
             )
         }
         composable(route = "picture") {
-            // TODO: swap the first picture for the selected one
-            PicScreen(pic = pics.first())
+            selectedPicture?.let { pic ->
+                PicScreen(pic = pic)
+            }
         }
     }
 }
