@@ -33,6 +33,7 @@ import java.text.NumberFormat
 @Composable
 fun ShopScreen(
     products: List<Product>,
+    onProductClick: (product: Product) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     LazyVerticalGrid(
@@ -48,8 +49,11 @@ fun ShopScreen(
         item {
             FreeShipping()
         }
-        items(products) {
-            ProductItem(product = it)
+        items(products) { product ->
+            ProductItem(
+                product = product,
+                onProductClick = onProductClick
+            )
         }
     }
 }
@@ -89,9 +93,13 @@ fun FreeShipping(modifier: Modifier = Modifier) {
 @Composable
 fun ProductItem(
     product: Product,
+    onProductClick: (product: Product) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    ElevatedCard(modifier = modifier) {
+    ElevatedCard(
+        onClick = { onProductClick(product) },
+        modifier = modifier
+    ) {
         Column(
             modifier = Modifier.padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp),
@@ -140,7 +148,8 @@ private fun ProductItemPreview() {
                 description = "mei",
                 size = 4363,
                 price = 6.7
-            )
+            ),
+            onProductClick = {}
         )
     }
 }
@@ -165,6 +174,9 @@ fun ShopScreenPreview() {
         )
     )
     AppTheme {
-        ShopScreen(products = products)
+        ShopScreen(
+            products = products,
+            onProductClick = {}
+        )
     }
 }
