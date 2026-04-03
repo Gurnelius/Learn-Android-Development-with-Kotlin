@@ -150,14 +150,14 @@ private fun ProductItemPreview() {
 fun ShopScreenPreview() {
     val products = listOf(
         Product(
-            name = "Carla Montoya",
+            name = "Carla",
             imageFile = "fabellas",
             description = "varius",
             size = 7963,
             price = 14.15
         ),
         Product(
-            name = "Julia McCormick",
+            name = "Julia",
             imageFile = "tristique",
             description = "alterum",
             size = 7143,
