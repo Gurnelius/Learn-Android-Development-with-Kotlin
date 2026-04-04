@@ -62,6 +62,7 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.converter.moshi)
     implementation(libs.androidx.preferences.datastore)
+    implementation(libs.androidx.datastore.core)
 
     testImplementation(libs.junit)
 
