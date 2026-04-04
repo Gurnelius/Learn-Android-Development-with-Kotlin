@@ -17,8 +17,12 @@ private const val TAG = "MainViewModel"
 class MainViewModel(
     private val productRepository: ProductRepository
 ) : ViewModel() {
-    private val _products = MutableStateFlow(emptyList<Product>())
-    val products: StateFlow<List<Product>> = _products
+    val products: StateFlow<List<Product>> = productRepository.getProducts()
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5_000),
+            initialValue = emptyList()
+        )
 
     private val _selectedProduct = MutableStateFlow<Product?>(null)
     val selectedProduct: StateFlow<Product?> = _selectedProduct
@@ -39,8 +43,7 @@ class MainViewModel(
 
     init {
         viewModelScope.launch {
-            _products.value = productRepository.getProducts()
-            Log.i(TAG, _products.value.toString())
+            productRepository.loadProducts()
         }
     }
 
